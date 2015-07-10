@@ -1,0 +1,47 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block integer_widget %}
+{% spaceless %}
+    {% set attr = attr|merge({class: 'm-wrap small'}) %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock integer_widget %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+    <div class="admin-form-row choices{{ div_class|default }}">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+                {{ name | trans }}
+            </label>
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    {% set attr = attr|merge({rows: '6'}) %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block form_row %}
+{% spaceless %}    
+    <div class="admin-form-row {{ div_class|default }}">
+        {{ form_label(form, null, { label_attr: {class: 'admin-form-label'} }) }}
+        <div class="controls">
+            {% if suffix is defined %}
+                <div class="input-append">
+                    {{ form_widget(form, { attr: {class: class|default('m-wrap large')} }) }}
+                    <span class="add-on">{{ suffix }}</span>
+                </div>
+            {% else %}
+                {{ form_widget(form, { attr: {class: class|default('m-wrap large')} }) }}
+            {% endif %}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}

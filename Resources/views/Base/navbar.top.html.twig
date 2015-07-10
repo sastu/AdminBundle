@@ -1,0 +1,45 @@
+<ul class="nav navbar-nav">
+
+    <!-- User Account: style can be found in dropdown.less -->
+    <li class="dropdown user user-menu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <img src="{{ get_profile_image() }}" class="user-image" alt="User Image"/>
+        <span class="hidden-xs">{{ app.user.username}}</span>
+      </a>
+      <ul class="dropdown-menu">
+        <!-- User image -->
+        <li class="user-header">
+          <img src="{{ get_profile_image() }}" class="img-circle" alt="User Image" />
+          <p>
+            {{ app.user.username}} - Admin
+            <small>Miembro desde {{app.user.created |date('M') | trans}} de {{app.user.created |date('Y')}}</small>
+          </p>
+        </li>
+        <!-- Menu Body -->
+        {#<li class="user-body">
+          <div class="col-xs-4 text-center">
+            <a href="#">Followers</a>
+          </div>
+          <div class="col-xs-4 text-center">
+            <a href="#">Sales</a>
+          </div>
+          <div class="col-xs-4 text-center">
+            <a href="#">Friends</a>
+          </div>
+        </li>#}
+        <!-- Menu Footer-->
+        <li class="user-footer">
+          {#<div class="pull-left">
+            <a href="#" class="btn btn-default btn-flat">Profile</a>
+          </div>#}
+          <div class="pull-right">
+            <a href="{{ path('logout')}}" class="btn btn-default btn-flat">Cerrar sesión</a>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <!-- Control Sidebar Toggle Button -->
+    <li>
+      <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+    </li>
+  </ul>

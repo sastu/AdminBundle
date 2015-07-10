@@ -1,0 +1,20 @@
+{% extends "AdminBundle:Base:layout.html.twig" %}
+
+{% block section %}dashboard{% endblock %}
+
+{% block content %}
+    
+    {% include 'AdminBundle:Example/dashboard:dashboard.html.twig' %}
+     
+{% endblock %}
+ 
+
+{% block javascripts %}
+    {{parent()}}
+    
+    {% javascripts 
+        'bundles/admin/js/example/dashboard.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

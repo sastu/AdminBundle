@@ -1,0 +1,58 @@
+parameters:
+  json_list.class: Optisoop\Bundle\AdminBundle\Service\DataTables\JsonList
+  #cart_json_list.class: Kitchenit\AdminBundle\Services\DataTables\CartJsonList
+
+  admin_manager.class: Optisoop\Bundle\AdminBundle\Service\AdminManager
+
+  upload_handler.class: Optisoop\Bundle\AdminBundle\Service\UploadHandler
+
+
+services:
+    json_list:
+        class: %json_list.class%
+        arguments:
+          - @request
+        scope: request
+        
+    admin_manager:
+        class: %admin_manager.class%
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @security.context
+          - { parameters: %core% }
+          - @service_container
+        
+    gedmo.listener.timestampable:
+        class: Gedmo\Timestampable\TimestampableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ @annotation_reader ] ]
+
+    gedmo.listener.sluggable:
+        class: Gedmo\Sluggable\SluggableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ @annotation_reader ] ]
+            
+    upload_handler:
+        class: %upload_handler.class%
+        arguments:
+            - %kernel.root_dir%
+            - @router
+            - @request
+            - @doctrine.orm.entity_manager
+        scope: request
+        
+    google.api.client:
+        class: Optisoop\Bundle\AdminBundle\Service\GoogleClient
+        arguments: [%admin%]
+
+    google.api.analytics:
+        class: Optisoop\Bundle\AdminBundle\Service\AnalyticsService
+        arguments: [@google.api.client, @doctrine]
+    
+    google.api.youtube:
+        class: Optisoop\Bundle\AdminBundle\Service\YoutubeService
+        arguments: [@google.api.client]

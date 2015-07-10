@@ -1,0 +1,72 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block integer_widget %}
+{% spaceless %}
+    {% set attr = attr|merge({class: 'm-wrap small'}) %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock integer_widget %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+    <div class="form-group choices{{ div_class|default }}">
+        <div class="controls">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <label class="checkbox">
+                    <input class="minimal" type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+                    {{ name | trans }}
+                </label>
+            </div>
+            
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    {% set attr = attr|merge({rows: '6'}) %}
+    {{ parent() }}
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block form_row %}
+{% spaceless %}    
+    <div class="form-group {{ div_class|default }}">
+        {{ form_label(form, null, { label_attr: {class: 'col-sm-2 control-label'} }) }}
+        <div class="col-sm-10">
+            {{ form_widget(form, { attr: {class: class|default('form-control')} }) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block file_widget %}
+{% spaceless %}
+    {% set type = type|default('file') %}
+
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+        <div class="fileupload-new thumbnail" style="width: 200px; {% if image is defined and image == ''%}height: 150px;{% endif %}">
+            <img src="{% if image is defined and image != ''%}/uploads/images/{{ image|default }}{% else%}https://placeholdit.imgix.net/~text?txtsize=22&bg=efefef&txtclr=aaaaaa&w=200&h=150&txt={% if small is defined and small != ''%}{{ small | default }}{% else%}{{ "image.select" | trans }}{% endif %}{% endif %}" alt="" />
+        </div>
+        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+        <div>
+           <span class="btn btn-file">
+               <span class="fileupload-new">{{ "image.select" | trans }}</span>
+               <span class="fileupload-exists">{{ "change" | trans }}</span>
+               <input type="{{ type }}" class="default" {{ block('widget_attributes') }} />
+           </span>
+           &nbsp;
+           <a href="#" class="btn btn-danger btn-flat fileupload-exists" data-dismiss="fileupload">{{ "delete" | trans }}</a>
+        </div>
+    </div>
+    {% if (detail is defined and detail != '') or (detail_img is defined and detail_img != '') %}
+    <div class="fileupload-detail">
+        {% if detail is defined and detail != ''%}<small>{{ detail|default }}</small>{% else%}{% endif %}
+        {% if detail_img is defined and detail_img != ''%}<img height="150" src="{{ detail_img|default }}" />{% else%}{% endif %}
+    </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock file_widget %}
