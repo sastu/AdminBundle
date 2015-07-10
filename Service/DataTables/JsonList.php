@@ -1,6 +1,6 @@
 <?php
 
-namespace Optisoop\Bundle\AdminBundle\Service\DataTables;
+namespace Core\Bundle\AdminBundle\Service\DataTables;
 
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectRepository;

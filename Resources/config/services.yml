@@ -1,10 +1,10 @@
 parameters:
-  json_list.class: Optisoop\Bundle\AdminBundle\Service\DataTables\JsonList
+  json_list.class: Core\Bundle\AdminBundle\Service\DataTables\JsonList
   #cart_json_list.class: Kitchenit\AdminBundle\Services\DataTables\CartJsonList
 
-  admin_manager.class: Optisoop\Bundle\AdminBundle\Service\AdminManager
+  admin_manager.class: Core\Bundle\AdminBundle\Service\AdminManager
 
-  upload_handler.class: Optisoop\Bundle\AdminBundle\Service\UploadHandler
+  upload_handler.class: Core\Bundle\AdminBundle\Service\UploadHandler
 
 
 services:
@@ -46,13 +46,13 @@ services:
         scope: request
         
     google.api.client:
-        class: Optisoop\Bundle\AdminBundle\Service\GoogleClient
+        class: Core\Bundle\AdminBundle\Service\GoogleClient
         arguments: [%admin%]
 
     google.api.analytics:
-        class: Optisoop\Bundle\AdminBundle\Service\AnalyticsService
+        class: Core\Bundle\AdminBundle\Service\AnalyticsService
         arguments: [@google.api.client, @doctrine]
     
     google.api.youtube:
-        class: Optisoop\Bundle\AdminBundle\Service\YoutubeService
+        class: Core\Bundle\AdminBundle\Service\YoutubeService
         arguments: [@google.api.client]

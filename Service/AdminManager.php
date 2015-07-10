@@ -1,12 +1,10 @@
 <?php
 
-namespace Optisoop\Bundle\AdminBundle\Service;
+namespace Core\Bundle\AdminBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Optisoop\Bundle\CoreBundle\Entity\Actor;
-use Optisoop\Bundle\CoreBundle\Entity\Optic;
-use Optisoop\Bundle\EcommerceBundle\Entity\Product;
+use Core\Bundle\CoreBundle\Entity\Actor;
 
 /**
  * Class AdminManager
@@ -56,23 +54,6 @@ class AdminManager
         }
     }
 
-    public function getOpticStats(Optic $optic, $start, $end) 
-    {
-        $stats = $this->entityManager->getRepository('CoreBundle:Optic')
-                ->getOpticStats($optic, $start, $end);
-        
-        return $stats;
-    }
-    
-    public function getProductStats(Product $product, $start, $end) 
-    {
-        $stats = $this->entityManager->getRepository('EcommerceBundle:Product')
-                ->getProductStats($product, $start, $end);
-        
-        return $stats;
-    }
-     
-    
     /**
      * Sets an entity as filtrable
      *

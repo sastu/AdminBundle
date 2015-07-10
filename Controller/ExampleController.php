@@ -1,6 +1,6 @@
 <?php
 
-namespace Optisoop\Bundle\AdminBundle\Controller;
+namespace Core\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

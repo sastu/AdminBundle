@@ -1,6 +1,6 @@
 <?php
 
-namespace Optisoop\Bundle\AdminBundle\Controller;
+namespace Core\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,7 +35,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ) {
-            return $this->redirect($this->generateUrl('optisoop_core_optic_dashboard'));
+            return $this->redirect($this->generateUrl('optisoop_admin_default_dashboard'));
         }
         return $this->redirect($this->generateUrl('admin_login'));
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Optisoop\Bundle\AdminBundle;
+namespace Core\Bundle\AdminBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

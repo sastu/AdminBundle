@@ -10,15 +10,15 @@
  * http://www.opensource.org/licenses/MIT
  */
 
-namespace Optisoop\Bundle\AdminBundle\Service;
+namespace Core\Bundle\AdminBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\HttpFoundation\Request;
-use Optisoop\Bundle\CoreBundle\Entity\Image as ProductImage;
-use Optisoop\Bundle\BlogBundle\Entity\Image as PostImage;
-use Optisoop\Bundle\CoreBundle\Entity\Project;
+use Core\Bundle\CoreBundle\Entity\Image as ProductImage;
+use Core\Bundle\BlogBundle\Entity\Image as PostImage;
+use Core\Bundle\CoreBundle\Entity\Project;
 
 /**
  * Class UploadHandler

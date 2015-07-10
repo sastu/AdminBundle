@@ -1,6 +1,6 @@
 <?php
 
-namespace Optisoop\Bundle\AdminBundle\Service;
+namespace Core\Bundle\AdminBundle\Service;
 
 /**
  * Class YoutubeService
