@@ -35,7 +35,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ) {
-            return $this->redirect($this->generateUrl('optisoop_admin_default_dashboard'));
+            return $this->redirect($this->generateUrl('core_admin_default_dashboard'));
         }
         return $this->redirect($this->generateUrl('admin_login'));
     }
@@ -71,7 +71,7 @@ class DefaultController extends Controller
         if ($request->query->get('code') && is_null($this->get('session')->get('access_token'))) {
             $client->authenticate($request->query->get('code'));
             $this->get('session')->set('access_token', $client->getAccessToken());
-            header('Location: ' . filter_var($this->generateUrl('optisoop_admin_default_analitycs'), FILTER_SANITIZE_URL));
+            header('Location: ' . filter_var($this->generateUrl('core_admin_default_analitycs'), FILTER_SANITIZE_URL));
         }
         
         /************************************************
